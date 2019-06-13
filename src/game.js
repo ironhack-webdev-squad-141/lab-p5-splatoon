@@ -32,7 +32,6 @@ class Game {
         } 
       }
     }
-    console.log(scores);
     document.getElementById("scoresDiv").innerHTML = `Player 1: ${scores[player1.color]}<br>Player 2: ${scores[player2.color]}`;
   }
 }

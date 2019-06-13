@@ -1,12 +1,3 @@
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 const game = new Game();
 const player1 = new Player(0,0);
 const player2 = new Player(9,9);
@@ -20,11 +11,9 @@ function setup() {
   let imgRight = loadImage("../assets/character-right.png");
   let imgLeft = loadImage("../assets/character-left.png");
   let imgDown = loadImage("../assets/character-down.png");
-  // let color1 = color('darkblue');
-  // let color2 = color('orange');
   player1.images = {down: imgDown, right: imgRight, left: imgLeft, up: imgUp};
-  player1.color = color(getRandomColor());
   player2.images = {down: imgDown, right: imgRight, left: imgLeft, up: imgUp};
+  player1.color = color(getRandomColor());
   player2.color = color(getRandomColor());
   player1.drawPlayer('down');
   player2.drawPlayer('down');
@@ -67,4 +56,13 @@ function keyPressed() {
       player2.moveRight();
       break;
   }
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
