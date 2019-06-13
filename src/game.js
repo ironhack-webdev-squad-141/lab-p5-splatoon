@@ -13,6 +13,7 @@ class Game {
 
   updateBoard(player) {
     this.colorMatrix[player.row][player.col] = player.color;
+    player.drawPlayer(player.direction);
   }
 
   drawColorMatrix() {
@@ -50,26 +51,31 @@ class Player {
   constructor(row, col) {
     this.col = col;
     this.row = row;
+    this.direction = 'down';
   }
 
   moveDown() {
     this.row < 9 ? this.row++ : console.log('Cannot move down');
+    this.direction = 'down';
   }
 
   moveRight() {
     this.col < 9 ? this.col++ : console.log('Cannot move right');
+    this.direction = 'right';
   }
 
   moveUp() {
     this.row > 0 ? this.row-- : console.log('Cannot move up');
+    this.direction = 'up';
   }
 
   moveLeft() {
     this.col > 0 ? this.col-- : console.log('Cannot move left');
+    this.direction = 'left';
   }
 
-  drawPlayer() {
-    image(this.image, SQUARE_SIDE*this.col, SQUARE_SIDE*this.row, SQUARE_SIDE, SQUARE_SIDE);
+  drawPlayer(direction) {
+    image(this.images[direction], SQUARE_SIDE*this.col, SQUARE_SIDE*this.row, SQUARE_SIDE, SQUARE_SIDE);
   }
 
 }
