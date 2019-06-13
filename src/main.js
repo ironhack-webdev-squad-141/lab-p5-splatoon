@@ -27,13 +27,12 @@ function draw() {
   game.updateBoard(player1);
   player2.drawPlayer();
   game.updateBoard(player2);
+  //game.calculateAndDisplayScore();
   
 }
 
 function keyPressed() {
   clear();
-  console.log("press");
-  console.log(keyCode);
   switch(keyCode) {
     case DOWN_ARROW:
       player1.moveDown();
