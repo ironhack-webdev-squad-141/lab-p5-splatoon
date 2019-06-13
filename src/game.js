@@ -12,6 +12,21 @@ class Game {
   }
 }
 
+// const gameArr = [
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// [[],[],[],[],[],[],[],[],[],[]],
+// ]
+
+// gameArr[row][col][0] = player1.row
+
 class Player {
   constructor(row, col, color) {
     this.row = row;
@@ -21,20 +36,24 @@ class Player {
 
   }
   moveUp() {
+    if(this.col > 0) {
     this.direction = "up";
-    this.col -= 100;
+    this.col -= 100;}
   }
   moveDown() {
+    if(this.col < 900) {
     this.direction = "down";
-    this.col += 100;
+    this.col += 100;}
   }
   moveLeft() {
+    if(this.row > 0) {
     this.direction = "left";
-    this.row -= 100;
+    this.row -= 100;}
   }
   moveRight() {
+    if(this.row < 900) {
     this.direction = "right";
-    this.row += 100;
+    this.row += 100;}
   }
 
   draw() {

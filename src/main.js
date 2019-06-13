@@ -3,8 +3,7 @@ let imgDown;
 let imgUp;
 let imgRight;
 let imgLeft;
-let colorPlayer1 = "red";
-let colorPlayer2 = "blue";
+
 
 
 function setup() {
@@ -15,13 +14,11 @@ function setup() {
   imgRight = loadImage("../assets/character-right.png");
   imgLeft = loadImage("../assets/character-left.png");
 
-  // image(imgDown, player1.row, player1.col, 100, 100);
-
 
 }
 
-const player1 = new Player(0, 0, colorPlayer1);
-const player2 = new Player(900, 900, colorPlayer2)
+const player1 = new Player(0, 0);
+const player2 = new Player(900, 900)
 
 function draw() {
   game.drawGrid();
