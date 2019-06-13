@@ -3,6 +3,9 @@ let imgDown;
 let imgUp;
 let imgRight;
 let imgLeft;
+let colorPlayer1 = "red";
+let colorPlayer2 = "blue";
+
 
 function setup() {
   let canvas = createCanvas(WIDTH, HEIGHT);
@@ -11,21 +14,24 @@ function setup() {
   imgUp = loadImage("../assets/character-up.png");
   imgRight = loadImage("../assets/character-right.png");
   imgLeft = loadImage("../assets/character-left.png");
+
+  // image(imgDown, player1.row, player1.col, 100, 100);
+
+
 }
 
-const player1 = new Player(0, 0);
+const player1 = new Player(0, 0, colorPlayer1);
+const player2 = new Player(900, 900, colorPlayer2)
 
 function draw() {
   game.drawGrid();
-  
-
-  
-  //image(imgDown, player1.row, player1.col, 100, 100);
-  // image(imgUp, player1.row, player1.col, 100, 100);
-  // image(imgRight, player1.row, player1.col, 100, 100);
-  // image(imgLeft, player1.row, player1.col, 100, 100);
-
+  player1.draw();
+  player2.draw();
 }
+  
+
+
+
 
 
 function keyPressed() {
@@ -33,22 +39,38 @@ function keyPressed() {
   if (keyCode === 38) {
     clear();
     player1.moveUp();
-    image(imgUp, player1.row, player1.col, 100, 100);
   } else if (keyCode === 40) {
     clear();
     player1.moveDown();
-    image(imgDown, player1.row, player1.col, 100, 100);
+    
   } else if (keyCode === 37) {
     clear();
     player1.moveLeft();
-    image(imgLeft, player1.row, player1.col, 100, 100);
+    
   } else if (keyCode === 39) {
     clear();
     player1.moveRight();
-    image(imgRight, player1.row, player1.col, 100, 100);
+    
+  }
+
+    else if (keyCode === 87) {
+      clear();
+    player2.moveUp();
+    
+  } else if (keyCode === 83) {
+    clear();
+    player2.moveDown();
+    
+  } else if (keyCode === 65) {
+    clear();
+    player2.moveLeft();
+    
+  } else if (keyCode === 68) {
+    clear();
+    player2.moveRight();
+    
   }
 }
-
 
 
 
