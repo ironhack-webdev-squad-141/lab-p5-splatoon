@@ -1,19 +1,20 @@
 class Game {
   constructor() {
     this.colorMatrix = [[],[],[],[],[],[],[],[],[],[]];
+    this.players = [];
+    this.players.push(new Player(0, 0, true), new Player(9, 9));
   }
 
   drawGrid() {
-    let offset = SQUARE_SIDE;
     for (var i=0; i<11; i++) {
-      line(0, i*offset, offset*10, i*offset);
-      line(i*offset, 0, i*offset, offset*10);
+      line(0, i*SQUARE_SIDE, SQUARE_SIDE*10, i*SQUARE_SIDE);
+      line(i*SQUARE_SIDE, 0, i*SQUARE_SIDE, SQUARE_SIDE*10);
     }
   }
 
   updateBoard(player) {
     this.colorMatrix[player.row][player.col] = player.color;
-    player.drawPlayer(player.direction);
+    player.draw();
   }
 
   drawColorMatrix() {
@@ -32,39 +33,31 @@ class Game {
         } 
       }
     }
-    document.getElementById("scoresDiv").innerHTML = `Player 1: ${scores[player1.color]}<br>Player 2: ${scores[player2.color]}`;
-  }
-}
-
-class Player {
-  constructor(row, col) {
-    this.col = col;
-    this.row = row;
-    this.direction = 'down';
+    let text = '';
+    this.players.forEach(player => {
+      text += `Player ${player.p1 ? 1 : 2}: ${scores[player.color]}<br>`;
+    });
+    document.getElementById("scoresDiv").innerHTML = text;
   }
 
-  moveDown() {
-    this.row < 9 ? this.row++ : console.log('Cannot move down');
-    this.direction = 'down';
+  setup() {
+    this.players.forEach(player => player.setup());
   }
 
-  moveRight() {
-    this.col < 9 ? this.col++ : console.log('Cannot move right');
-    this.direction = 'right';
+  keyPressed() {
+    switch(keyCode) {
+      case 83:
+      case 87:
+      case 65:
+      case 68: 
+        this.players[1].keyPressed(this.players[0].row, this.players[0].col);
+        break;
+      case UP_ARROW:
+      case DOWN_ARROW:
+      case RIGHT_ARROW:
+      case LEFT_ARROW:  
+        this.players[0].keyPressed(this.players[1].row, this.players[1].col)
+        break;
+    }
   }
-
-  moveUp() {
-    this.row > 0 ? this.row-- : console.log('Cannot move up');
-    this.direction = 'up';
-  }
-
-  moveLeft() {
-    this.col > 0 ? this.col-- : console.log('Cannot move left');
-    this.direction = 'left';
-  }
-
-  drawPlayer(direction) {
-    image(this.images[direction], SQUARE_SIDE*this.col, SQUARE_SIDE*this.row, SQUARE_SIDE, SQUARE_SIDE);
-  }
-
 }
