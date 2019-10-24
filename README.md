@@ -1,10 +1,10 @@
 ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# JS | P5 Splatoon Like
+# JS | P5 Treasure Hunt
 
 ## Introduction
 
-Let's implement a simple Platoon-like game, where you would need to paint as many squares on the board as possible.
+Let's implement a simple treasure hunt game, where you would need to move a player around in search for a *not-so-hidden* treasure.  
 
 ## Iteration 1
 
@@ -55,21 +55,18 @@ Make sure you `clear()` before drawing your player again 😉
 
 ## Iteration 5
 
-Add a second player, on the last column and the last row.
+Create a class `Treasure` with a method `setRandomPosition()` and a property `col` and `row`.  
 
-He should be able to move around with WASD (up-left-bottom-right).
+Create a function `drawTreasure()` that displays the treasure on the canvas. The picture is `images/treasure.png`
 
-💡[keycode.info](http://keycode.info/)
 
-## Iteration 6
 
-Find a way to make your players "paint" the squares that they have walked on.
-
-## Iteration 7 (BONUS)
+## Iteration 6 (BONUS)
 
 Find some bonuses to the game!
 
 - Scores
+- Add a second player 💡[keycode.info](http://keycode.info/)
 - Try to make use of all the assets provided
 
-![](https://i.imgur.com/YXIAWj8.png)
+You can find a demo [here](https://ironhack-dev-squad-127.github.io/lab-canvas-treasure-hunt/solution-code/)
